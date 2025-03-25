@@ -1,0 +1,44 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Bun",
+	"docs": "https://bun.sh/docs/typescript",
+	"compilerOptions": {
+		"lib": ["ESNext", "DOM"],
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleDetection": "force",
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"noEmit": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noPropertyAccessFromIndexSignature": true
+	},
+	"dependencies": {
+		"@types/express": "^5.0.1",
+		"@types/jsdom": "^21.1.7",
+		"axios": "^1.8.4",
+		"express": "^4.21.2",
+		"jsdom": "^26.0.0",
+		"zod": "^3.24.2"
+	},
+	"name": "amazon-script",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun run --watch src/server.ts"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	}
+}
