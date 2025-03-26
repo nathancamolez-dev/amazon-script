@@ -1,14 +1,19 @@
 import axios from "axios";
+import cors from "cors";
 import express from "express";
 import { parseData } from "./functions/parse-data";
 const app = express();
+
+app.use(
+	cors({
+		origin: "http://localhost:5173",
+	}),
+);
 
 app.get("/api/scrape", async (req, res) => {
 	const keyword = req.query.keyword;
 	const amazonUrl = "https://www.amazon.com/s";
 	const param = new URLSearchParams({ k: String(keyword) }).toString();
-	console.log("sofsdofj");
-	console.log(`${amazonUrl}?${param}`);
 
 	try {
 		const { data } = await axios.get(`${amazonUrl}?${param} `, {
@@ -20,7 +25,7 @@ app.get("/api/scrape", async (req, res) => {
 		});
 
 		const response = await parseData(data);
-		res.status(200).json(response);
+		res.status(200).json({ products: response });
 		return;
 	} catch (e) {
 		const errorMessage = e instanceof Error ? e.message : "Unkowwn error";
