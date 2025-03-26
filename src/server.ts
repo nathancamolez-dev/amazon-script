@@ -29,7 +29,7 @@ app.get("/api/scrape", async (req, res) => {
 		return;
 	} catch (e) {
 		const errorMessage = e instanceof Error ? e.message : "Unkowwn error";
-		console.log("Erro ao buscar resultados: ", errorMessage);
+		console.log("Error on scraping", errorMessage);
 		res.status(500).json({ error: errorMessage });
 		return;
 	}
